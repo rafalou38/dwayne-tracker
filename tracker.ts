@@ -42,9 +42,6 @@ dwaynesRef.onSnapshot(querySnapshot => {
     querySnapshot.docChanges().forEach(async change => {
         const data = change.doc.data() as Dwayne;
         const old = cachedDwaynes.get(change.doc.id);
-        if (change.type === 'added') {
-            console.log("Registered: ", data.code);
-        }
         if (change.type === 'modified' && old && data.finds != old.finds && data.finds > old.finds) {
             console.log('New Scan: ', data.code);
 
@@ -56,6 +53,7 @@ dwaynesRef.onSnapshot(querySnapshot => {
 
         }
 
+        console.log("Cached: ", data.code);
         cachedDwaynes.set(change.doc.id, data);
     });
 });
