@@ -21,9 +21,14 @@ async function send(data: any) {
 }
 
 
-export function getDwayneImageURL(code: string) {
-    const fileRef = getStorage().bucket("dwayneop-f78db.appspot.com").file(`dwaynes/${code}`);
-    return getDownloadURL(fileRef);
+export async function getDwayneImageURL(code: string) {
+    try {
+        const fileRef = getStorage().bucket("dwayneop-f78db.appspot.com").file(`dwaynes/${code}`);
+        const url = await getDownloadURL(fileRef);
+        return url
+    } catch (error) {
+        return "https://cdn.discordapp.com/avatars/1223669938053709945/72bdbc802e0a590630442057431b40e4.webp?size=512"
+    }
 }
 
 
