@@ -1,0 +1,9 @@
+{
+  "name": "dwayne-tracker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "firebase-admin": "^12.0.0"
+  }
+}
